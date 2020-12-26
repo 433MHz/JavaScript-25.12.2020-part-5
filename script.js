@@ -45,6 +45,8 @@ function insertDivs() {
 }
 
 var deathCounter = 0;
+var yes = new Audio("yes.wav");
+var no = new Audio("No.wav");
 
 function checkLetters(letter) {
 var tempHaslo1 = "";
@@ -73,10 +75,12 @@ var tempHaslo1 = "";
         counter();
         document.getElementById(letter).style.backgroundColor = '#ff0000';
         document.getElementById(letter).setAttribute("onclick",";")
+        no.play();
     }
     else{
         document.getElementById(letter).style.backgroundColor = '#00ff1a';
         document.getElementById(letter).setAttribute("onclick",";")
+        yes.play();
     }
     haslo1 = tempHaslo1;
     document.getElementById("logo").innerHTML = haslo1;
