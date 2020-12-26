@@ -31,7 +31,7 @@ function insertDivs() {
             if(div_value.charAt(x)==" ");
 
             else{
-                var temporaryDivHtml = "<div class=\"button\" onclick=\"checkLetters('"+ div_value.charAt(counter) + "')\">" + div_value.charAt(counter) + "</div>";
+                var temporaryDivHtml = "<div class=\"button\" id=\"" + div_value.charAt(counter) + "\" onclick=\"checkLetters('"+ div_value.charAt(counter) + "')\">" + div_value.charAt(counter) + "</div>";
                 div_html = div_html + temporaryDivHtml;
                 counter = counter + 2;
             } 
@@ -43,6 +43,8 @@ function insertDivs() {
         }
     document.getElementById("right").innerHTML = div_html;
 }
+
+var deathCounter = 0;
 
 function checkLetters(letter) {
 var tempHaslo1 = "";
@@ -63,6 +65,29 @@ var tempHaslo1 = "";
             tempHaslo1 = tempHaslo1 + "-";
         }
     }
+    if(tempHaslo1 == haslo){
+        alert("You won!");
+    }
+    else if(haslo1 == tempHaslo1){
+        deathCounter++;
+        counter();
+        document.getElementById(letter).style.backgroundColor = '#ff0000';
+    }
+    else{
+        document.getElementById(letter).style.backgroundColor = '#00ff1a';
+    }
     haslo1 = tempHaslo1;
     document.getElementById("logo").innerHTML = haslo1;
+}
+
+
+function counter() {
+    if(deathCounter<10){
+    var imageTemplate = "<img src=\"img/s" + deathCounter + ".jpg\">";
+    document.getElementById("left").innerHTML = imageTemplate;
+    }
+    else{
+        alert("game over");
+        location.reload();
+    }
 }
