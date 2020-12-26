@@ -72,9 +72,11 @@ var tempHaslo1 = "";
         deathCounter++;
         counter();
         document.getElementById(letter).style.backgroundColor = '#ff0000';
+        document.getElementById(letter).setAttribute("onclick",";")
     }
     else{
         document.getElementById(letter).style.backgroundColor = '#00ff1a';
+        document.getElementById(letter).setAttribute("onclick",";")
     }
     haslo1 = tempHaslo1;
     document.getElementById("logo").innerHTML = haslo1;
